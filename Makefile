@@ -19,5 +19,8 @@ logs:
 makemigration:
 	docker compose exec -e PYTHONPATH=/project/src app poetry run alembic revision --autogenerate -m "$(name)"
 
+migrate:
+	docker compose exec -e PYTHONPATH=/project/src app poetry run alembic upgrade head
+
 history:
 	docker compose exec -e PYTHONPATH=/project/src app poetry run alembic history --verbose
