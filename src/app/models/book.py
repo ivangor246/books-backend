@@ -21,11 +21,11 @@ class BookModel(BaseModel):
     image_url: Mapped[str]
     amount: Mapped[int]
 
-    authors: Mapped[list[AuthorModel]] = relationship(
+    authors: Mapped[list['AuthorModel']] = relationship(
         secondary=book_author_association,
         back_populates='books',
     )
-    genres: Mapped[list[GenreModel]] = relationship(
+    genres: Mapped[list['GenreModel']] = relationship(
         secondary=book_genre_association,
         back_populates='books',
     )

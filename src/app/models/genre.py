@@ -14,7 +14,7 @@ class GenreModel(BaseModel):
 
     name: Mapped[str_50]
 
-    books: Mapped[list[BookModel]] = relationship(
+    books: Mapped[list['BookModel']] = relationship(
         secondary=book_genre_association,
         back_populates='genres',
     )

@@ -15,7 +15,7 @@ class AuthorModel(BaseModel):
     name: Mapped[str_100]
     image_url: Mapped[str]
 
-    books: Mapped[list[BookModel]] = relationship(
+    books: Mapped[list['BookModel']] = relationship(
         secondary=book_author_association,
         back_populates='authors',
     )
