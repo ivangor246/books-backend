@@ -19,6 +19,10 @@ class Config(BaseSettings):
     def DB_URL(self) -> str:
         return f'postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}'
 
+    @property
+    def SYNC_DB_URL(self) -> str:
+        return f'postgresql+psycopg2://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}'
+
 
 @lru_cache
 def get_config() -> Config:

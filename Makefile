@@ -1,3 +1,4 @@
+# app
 up:
 	docker compose -f docker-compose.yml up -d --build --force-recreate --remove-orphans
 
@@ -12,3 +13,11 @@ rm:
 
 logs:
 	docker compose -f docker-compose.yml logs
+
+
+# alembic
+makemigration:
+	docker compose exec -e PYTHONPATH=/project/src app poetry run alembic revision --autogenerate -m "$(name)"
+
+history:
+	docker compose exec -e PYTHONPATH=/project/src app poetry run alembic history --verbose

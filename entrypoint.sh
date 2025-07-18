@@ -6,6 +6,8 @@ done
 
 cd src
 
+alembic upgrade head
+
 
 if [ "$DEV_MODE" = "true" ]; then
     exec uvicorn app.main:create_app --factory --host 0.0.0.0 --port 8000 --reload
